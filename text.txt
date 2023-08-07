@@ -1,0 +1,43 @@
+const url = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1';
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZmNhOGM2ZWRmZWJhMTIxMWUxMDAzMWY0NjA0ZjBlZiIsInN1YiI6IjY0ZDBiN2ZmODUwOTBmMDBhZTg0NDEwMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eDgWr96RE55fRA4IBn6Wlksw1tb0PYVFug23jtjXiMQ'
+  }
+};
+
+adult: false
+backdrop_path: "/8pjWz2lt29KyVGoq1mXYu6Br7dE.jpg"
+genre_ids: 
+(3) [28, 878, 27]
+id: 615656
+original_language
+: 
+"en"
+original_title
+: 
+"Meg 2: The Trench"
+overview
+: 
+"An exploratory dive into the deepest depths of the ocean of a daring research team spirals into chaos when a malevolent mining operation threatens their mission and forces them into a high-stakes battle for survival."
+popularity
+: 
+3542.618
+poster_path
+: 
+"/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg"
+release_date
+: 
+"2023-08-02"
+title: 
+"Meg 2: The Trench"
+video
+: 
+false
+vote_average
+: 
+7
+vote_count
+: 
+160

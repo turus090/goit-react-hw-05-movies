@@ -1,8 +1,10 @@
+import Popular from "./popular/Popular"
+
 const Home = () => {
     return (
-        <h1>
-            Home
-        </h1>
+      <>
+        <Popular/>
+      </>
     )
 }
 

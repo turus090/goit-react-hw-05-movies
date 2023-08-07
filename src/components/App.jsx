@@ -16,6 +16,7 @@ const App = () => {
          element = {<Movies/>}
         />
       </Routes>
+      
    </BrowserRouter>
   );
 };
