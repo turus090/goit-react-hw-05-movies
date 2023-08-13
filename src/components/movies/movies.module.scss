@@ -1,3 +1,5 @@
+$whiteColor: #FFF;
+$repetaColor: tomato;
 .container {
     &_search {
         width: 400px;
@@ -5,7 +7,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #FFF;
+        background: $whiteColor;
         border-radius: 8px;
         overflow: hidden;
         &_input {
@@ -23,10 +25,34 @@
             border: none;
             width: 100px;
             height: 30px;
-            background: #FFF;
+            background: $whiteColor;
             border-left: 1px solid #c3c3c3;
             &:focus{
                 outline:none;
+            }
+        }
+    }
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    width: 50%;
+    margin: 20px auto;
+    padding: 5px;
+    background: #FFF;
+    border-radius: 8px;
+    list-style: none;
+    &_item{
+        border-bottom: 2px  solid #c3c3c3;
+        &_link{
+            text-decoration: none;
+            color: $repetaColor;
+
+            &:hover{
+                transition-duration: 0.3s;
+                color: #c14f3b;
             }
         }
     }

@@ -2,6 +2,7 @@ import s from './movies.module.scss';
 import { Notify } from 'notiflix';
 import {useState} from 'react'
 import axios from 'axios';
+import MoviesList from './MoviesList';
 const Movies = () => {
 
   const [searchValue, setSearchValue] = useState('')
@@ -42,6 +43,12 @@ const Movies = () => {
         onClick={handeleClickSearch}
         >Go</button>
       </div>
+      {
+        searchList.length > 0 &&
+        <MoviesList
+          films={searchList}
+        />
+      }
     </div>
   );
 };
