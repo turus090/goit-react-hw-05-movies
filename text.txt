@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-const url = 'https://api.themoviedb.org/3/movie/569094/credits?language=en-US';
+const url = 'https://api.themoviedb.org/3/movie/447365/credits?language=en-US';
 const options = {
   method: 'GET',
   headers: {
@@ -13,7 +13,6 @@ fetch(url, options)
   .then(res => res.json())
   .then(json => console.log(json))
   .catch(err => console.error('error:' + err));
-
   {
   "id": 569094,
   "cast": [
