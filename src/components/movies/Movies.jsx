@@ -21,14 +21,22 @@ const Movies = () => {
   const handeleUpdateSearch = (newValue) => {
     setSearchValue(newValue)
   }
-  const handeleClickSearch = () => {
+const startSerach =() =>{
+  if (searchValue.length > 0){
+    getFilms()
+  } else {
+    Notify.info("Please entry film name")
+  } 
+}
+window.addEventListener('keydown',(e) => {
+  if(e.key === 'Enter' ){
     if (searchValue.length > 0){
       getFilms()
     } else {
       Notify.info("Please entry film name")
-    }
-    
+    } 
   }
+})
   return (
     <div className={s.container}>
       <div className={s.container_search}>
@@ -40,7 +48,7 @@ const Movies = () => {
           />
         <button 
         className={s.container_search_btn}
-        onClick={handeleClickSearch}
+        onClick={startSerach}
         >Go</button>
       </div>
       {
