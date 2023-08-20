@@ -1,25 +1,21 @@
 import s from './movieDetails.module.scss'
 import { useState, useEffect} from 'react'
-import {Link, useParams} from 'react-router-dom'
-import axios from 'axios'
+import {Link, useParams, Route, Routes} from 'react-router-dom'
+import Cast from 'components/cast/Cast'
+import Reviews from 'components/reviews/Reviews'
+import { getMovieDetails } from 'common/requests'
 
 const MovieDetails = () => {
     const {movieId} = useParams()
-    const getMovieInfo = () => {
-       axios.get(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`,{
-        headers: {
-            accept: 'application/json',
-            Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZmNhOGM2ZWRmZWJhMTIxMWUxMDAzMWY0NjA0ZjBlZiIsInN1YiI6IjY0ZDBiN2ZmODUwOTBmMDBhZTg0NDEwMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eDgWr96RE55fRA4IBn6Wlksw1tb0PYVFug23jtjXiMQ',
-          },
-       }).then(res=>setMovieInfo(res.data))
-    }
+   
     const [movieInfo, setMovieInfo] = useState({})
     const [genres, setGenres] = useState([])
     useEffect(()=>{
         setGenres(movieInfo.genres)
     },[movieInfo])
-    getMovieInfo()
+    getMovieDetails(movieId).then(res=>{
+        setMovieInfo(res)
+    })
 return (
     <div>
         <Link className={s.link} to="/movies">Go back</Link>
@@ -57,7 +53,20 @@ return (
             </ul>
             <p className={s.container_additions_text}></p>
         </div>
-       
+        <Routes>
+       <Route
+            path='/cast'
+            element={
+              <Cast/>
+            }
+          />   
+        <Route
+            path='/reviews'
+            element={
+              <Reviews/>
+            }
+          />   
+          </Routes>
     </div>
 )
 }
