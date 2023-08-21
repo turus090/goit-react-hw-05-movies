@@ -14,7 +14,11 @@ const Cast = () => {
            {castList.map(castItem=>(
             <CastItem
                 key={castItem.id}
-                imgSrc={`https://image.tmdb.org/t/p/original${castItem.profile_path}`}
+                imgSrc={
+                    castItem.profile_path 
+                    ? `https://image.tmdb.org/t/p/original${castItem.profile_path}`
+                    : 'https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png'
+                }
                 name={castItem.name}
                 role={castItem.character}
             />

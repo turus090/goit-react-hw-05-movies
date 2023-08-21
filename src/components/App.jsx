@@ -1,26 +1,29 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Header from './header/Header';
-import Home from './home/Home';
-import Movies from './movies/Movies';
-import MoviesDetails from './movieDetails/MovieDetails';
+import Home from '../pages/home/Home';
+import MoviesPage from 'pages/movies/MoviesPage';
+import MoviesItemPage from 'pages/moviesItem/MoviesItemPage';
+
 const App = () => {
   return (
    <BrowserRouter>
-      <Header/>
-      <Routes>
+       <Routes>
+<Route  path='/'
+         element = {<Header/>}>
+
         <Route
-          path ="/"
+         index
           element = {<Home/>}
         />
         <Route
          path='/movies'
-         element = {<Movies/>}
+         element = {<MoviesPage/>}
         />
         <Route 
         path='/movies/:movieId/*'
-        element = {<MoviesDetails/>}
+        element = {<MoviesItemPage/>}
         />
-        
+        </Route>
       </Routes>
       
    </BrowserRouter>

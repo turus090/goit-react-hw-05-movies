@@ -20,7 +20,14 @@ return (
     <div>
         <Link className={s.link} to="/movies">Go back</Link>
         <div className={s.container} >
-            <img className={s.container_img} src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`} alt='' /> 
+            <img 
+                className={s.container_img} 
+                src={
+                    movieInfo.poster_path
+                    ? `https://image.tmdb.org/t/p/original${movieInfo.poster_path}`
+                    : `https://www.iconarchive.com/download/i99782/designbolts/free-multimedia/Film.1024.png`
+                } 
+                alt='' /> 
             <ul className={s.container_info}>
               <li className={s.container_info_item}>
                  <h2 className={s.container_info_item_name}> {movieInfo.original_title}</h2>
