@@ -1,8 +1,8 @@
 import s from './movies.module.scss';
 import { Notify } from 'notiflix';
-import {useState} from 'react'
-import MoviesList from './MoviesList';
+import {useEffect, useState} from 'react';
 import { getSearchList } from 'common/requests';
+import List from 'components/list/List';
 const Movies = () => {
 
   const [searchValue, setSearchValue] = useState('')
@@ -20,6 +20,11 @@ const startSerach =() =>{
     Notify.info("Please entry film name")
   } 
 }
+useEffect(()=>{
+  getSearchList(searchValue).then(res=>{
+    setSearchList(res.results)
+  })
+},[searchValue])
   return (
     <div className={s.container}>
       <form 
@@ -41,8 +46,8 @@ const startSerach =() =>{
       </form>
       {
         searchList.length > 0 &&
-        <MoviesList
-          films={searchList}
+        <List
+          store={searchList}
         />
       }
     </div>

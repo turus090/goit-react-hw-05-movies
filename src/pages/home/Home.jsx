@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import s from '../../components/home/popular/popular.module.scss'
-import PopularList from 'components/home/popular/PopularList';
+import s from './home.module.scss'
 import { getPopularFilms } from 'common/requests';
+import List from 'components/list/List';
 
 const Home = () => {
   const [filmList, setFilmList] = useState([])
@@ -9,9 +9,9 @@ const Home = () => {
     setFilmList(res.results)
   })
 return (
-  <div className={s.popular}>
-    <h2 className={s.popular_title}>Trending today</h2>
-    <PopularList filmList={filmList}/>
+  <div className={s.home}>
+    <h2 className={s.home_title}>Trending today</h2>
+    <List store = {filmList}/>
   </div>
 );
 }

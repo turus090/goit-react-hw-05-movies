@@ -1,8 +1,8 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Header from './header/Header';
 import Home from '../pages/home/Home';
-import MoviesPage from 'pages/movies/MoviesPage';
-import MoviesItemPage from 'pages/moviesItem/MoviesItemPage';
+import MoviesPage from 'pages/moviesPage/MoviesPage';
+import MoviesItemPage from 'pages/moviesItemPage/MoviesItemPage';
 
 const App = () => {
   return (
