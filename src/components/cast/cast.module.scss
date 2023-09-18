@@ -1,25 +1,29 @@
-.list{
+.list {
     display: flex;
     justify-content: center;
     column-gap: 16px;
     flex-wrap: wrap;
-    &_item{
+
+    &_item {
         width: 250px;
         padding: 5px;
-        border:2px solid #ccc;
+        border: 2px solid #ccc;
         border-radius: 8px;
         display: flex;
         flex-direction: column;
         row-gap: 5px;
         align-items: center;
-        &_img{
-            width:240px;
+
+        &_img {
+            width: 240px;
         }
-        &_name{
+
+        &_name {
             font-size: 20px;
             font-weight: 700;
         }
-        &_role{
+
+        &_role {
             font-size: 18px;
         }
     }

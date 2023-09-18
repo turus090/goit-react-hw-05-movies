@@ -23,6 +23,9 @@ const App = () => {
             <Route path="/movies" element={<MoviesPage />} />
             <Route path="/movies/:movieId/*" element={<MoviesItemPage />} />
           </Route>
+          <Route path="/goit-react-hw-05-movies" element={<Header />}>
+            <Route index element={<Home />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </Suspense>

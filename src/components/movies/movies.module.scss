@@ -1,40 +1,45 @@
 $whiteColor: #FFF;
 $repetaColor: tomato;
+
 .container {
     &_search {
         width: 400px;
-        margin:20px auto;
+        margin: 20px auto;
         display: flex;
         align-items: center;
         justify-content: center;
         background: $whiteColor;
         border-radius: 8px;
         overflow: hidden;
+
         &_input {
-            border:none;
+            border: none;
             margin: 0;
             padding: 0;
             width: 300px;
             height: 30px;
-            &:focus{
-                outline:none;
+
+            &:focus {
+                outline: none;
             }
         }
-        &_btn{
+
+        &_btn {
             cursor: pointer;
             border: none;
             width: 100px;
             height: 30px;
             background: $whiteColor;
             border-left: 1px solid #c3c3c3;
-            &:focus{
-                outline:none;
+
+            &:focus {
+                outline: none;
             }
         }
     }
 }
 
-.list{
+.list {
     display: flex;
     flex-direction: column;
     row-gap: 20px;
@@ -44,13 +49,15 @@ $repetaColor: tomato;
     background: #FFF;
     border-radius: 8px;
     list-style: none;
-    &_item{
-        border-bottom: 2px  solid #c3c3c3;
-        &_link{
+
+    &_item {
+        border-bottom: 2px solid #c3c3c3;
+
+        &_link {
             text-decoration: none;
             color: $repetaColor;
 
-            &:hover{
+            &:hover {
                 transition-duration: 0.3s;
                 color: #c14f3b;
             }
