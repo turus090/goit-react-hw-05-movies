@@ -16,10 +16,12 @@ const MovieDetails = () => {
       setMovieInfo(res);
     });
   }, [movieInfo, movieId]);
-
+  const searchParams = localStorage.getItem('search')
+    ? `search=${localStorage.getItem('search')}`
+    : '';
   return (
     <div>
-      <Link className={s.link} to="/movies">
+      <Link className={s.link} to={`/movies?${searchParams}`}>
         Go back
       </Link>
       <div className={s.container}>
