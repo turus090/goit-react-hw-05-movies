@@ -1,11 +1,12 @@
 import s from './movieDetails.module.scss';
 import { useState, useEffect } from 'react';
-import { Link, useParams, Route, Routes } from 'react-router-dom';
+import { Link, useParams, Route, Routes, useNavigate } from 'react-router-dom';
 import Cast from 'components/cast/Cast';
 import Reviews from 'components/reviews/Reviews';
 import { getMovieDetails } from 'common/requests';
 
 const MovieDetails = () => {
+  const navigate = useNavigate();
   const { movieId } = useParams();
 
   const [movieInfo, setMovieInfo] = useState({});
@@ -16,14 +17,12 @@ const MovieDetails = () => {
       setMovieInfo(res);
     });
   }, [movieInfo, movieId]);
-  const searchParams = localStorage.getItem('search')
-    ? `search=${localStorage.getItem('search')}`
-    : '';
+
   return (
     <div>
-      <Link className={s.link} to={`/movies?${searchParams}`}>
+      <button className={s.link} onClick={() => navigate(-1)}>
         Go back
-      </Link>
+      </button>
       <div className={s.container}>
         <img
           className={s.container_img}
