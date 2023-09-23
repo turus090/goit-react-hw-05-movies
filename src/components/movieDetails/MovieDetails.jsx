@@ -1,26 +1,35 @@
 import s from './movieDetails.module.scss';
-import { useState, useEffect } from 'react';
-import { Link, useParams, Route, Routes, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import {
+  Link,
+  useParams,
+  Route,
+  Routes,
+  useNavigate,
+  useLocation,
+} from 'react-router-dom';
 import Cast from 'components/cast/Cast';
 import Reviews from 'components/reviews/Reviews';
 import { getMovieDetails } from 'common/requests';
 
 const MovieDetails = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const fromLocation = useRef(location.state?.from ?? '/');
   const { movieId } = useParams();
 
   const [movieInfo, setMovieInfo] = useState({});
   const [genres, setGenres] = useState([]);
   useEffect(() => {
     getMovieDetails(movieId).then(res => {
-      setGenres(movieInfo.genres);
+      setGenres(res.genres);
       setMovieInfo(res);
     });
-  }, [movieInfo, movieId]);
+  }, [movieId]);
 
   return (
     <div>
-      <button className={s.link} onClick={() => navigate(-1)}>
+      <button className={s.link} onClick={() => navigate(fromLocation.current)}>
         Go back
       </button>
       <div className={s.container}>
