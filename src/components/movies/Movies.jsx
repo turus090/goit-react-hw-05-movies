@@ -1,6 +1,6 @@
 import s from './movies.module.scss';
 import { Notify } from 'notiflix';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { getSearchList } from 'common/requests';
@@ -11,7 +11,7 @@ const Movies = () => {
   const [startSearch, setStartSearch] = useState(false);
   const inputRef = useRef(null);
 
-  const startSerach = () => {
+  const startSearchReq = useCallback(() => {
     setStartSearch(true);
     const searchValue = inputRef.current.value;
     console.log(searchValue);
@@ -20,7 +20,14 @@ const Movies = () => {
     } else {
       Notify.info('Please entry film name');
     }
-  };
+  }, [setSearchParams, inputRef]);
+
+  useEffect(() => {
+    if (localStorage.getItem('goBack') === 'true') {
+      localStorage.setItem('goBack', 'false');
+      startSearchReq();
+    }
+  }, [startSearchReq]);
 
   useEffect(() => {
     if (startSearch) {
@@ -44,7 +51,7 @@ const Movies = () => {
           }}
           value={searchParams.get('search') ? searchParams.get('search') : ''}
         />
-        <button className={s.container_search_btn} onClick={startSerach}>
+        <button className={s.container_search_btn} onClick={startSearchReq}>
           Go
         </button>
       </form>

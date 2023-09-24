@@ -27,9 +27,14 @@ const MovieDetails = () => {
     });
   }, [movieId]);
 
+  const handleGoBack = () => {
+    localStorage.setItem('goBack', 'true');
+    navigate(fromLocation.current);
+  };
+  localStorage.setItem('search', movieInfo.original_title);
   return (
     <div>
-      <button className={s.link} onClick={() => navigate(fromLocation.current)}>
+      <button className={s.link} onClick={handleGoBack}>
         Go back
       </button>
       <div className={s.container}>

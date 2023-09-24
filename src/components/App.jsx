@@ -16,7 +16,7 @@ const MoviesItemPage = lazy(() =>
 const App = () => {
   return (
     <Suspense>
-      <BrowserRouter>
+      <BrowserRouter basename="/goit-react-hw-05-movies">
         <Routes>
           <Route path="/" element={<Header />}>
             <Route index element={<Home />} />
