@@ -9,6 +9,9 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchList, setSearchList] = useState([]);
   const [startSearch, setStartSearch] = useState(false);
+  const [goBack, setGoBack] = useState(
+    JSON.parse(localStorage.getItem('goBack'))
+  );
   const inputRef = useRef(null);
 
   const startSearchReq = useCallback(() => {
@@ -20,14 +23,16 @@ const Movies = () => {
     } else {
       Notify.info('Please entry film name');
     }
+    localStorage.setItem('goBack', 'false');
+    setGoBack(false);
   }, [setSearchParams, inputRef]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (localStorage.getItem('goBack') === 'true') {
       localStorage.setItem('goBack', 'false');
       startSearchReq();
     }
-  }, [startSearchReq]);
+  }, [startSearchReq]);*/
 
   useEffect(() => {
     if (startSearch) {
@@ -55,7 +60,7 @@ const Movies = () => {
           Go
         </button>
       </form>
-      {searchList.length > 0 && <List store={searchList} />}
+      {searchList.length && !goBack > 0 && <List store={searchList} />}
     </div>
   );
 };
