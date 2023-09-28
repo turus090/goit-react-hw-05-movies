@@ -28,7 +28,6 @@ const MovieDetails = () => {
   }, [movieId]);
 
   const handleGoBack = () => {
-    localStorage.setItem('goBack', 'true');
     navigate(fromLocation.current);
   };
   localStorage.setItem('search', movieInfo.original_title);

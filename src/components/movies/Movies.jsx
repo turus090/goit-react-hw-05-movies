@@ -9,9 +9,7 @@ const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchList, setSearchList] = useState([]);
   const [startSearch, setStartSearch] = useState(false);
-  const [goBack, setGoBack] = useState(
-    JSON.parse(localStorage.getItem('goBack'))
-  );
+  const [goBack, setGoBack] = useState(searchParams.get('search') !== null);
   const inputRef = useRef(null);
 
   const startSearchReq = useCallback(() => {
@@ -27,12 +25,12 @@ const Movies = () => {
     setGoBack(false);
   }, [setSearchParams, inputRef]);
 
-  /* useEffect(() => {
-    if (localStorage.getItem('goBack') === 'true') {
-      localStorage.setItem('goBack', 'false');
-      startSearchReq();
-    }
-  }, [startSearchReq]);*/
+  if (goBack) {
+    getSearchList(searchParams.get('search')).then(res => {
+      setSearchList(res.results);
+    });
+    setGoBack(false);
+  }
 
   useEffect(() => {
     if (startSearch) {
@@ -60,7 +58,7 @@ const Movies = () => {
           Go
         </button>
       </form>
-      {searchList.length && !goBack > 0 && <List store={searchList} />}
+      {searchList.length > 0 && !goBack && <List store={searchList} />}
     </div>
   );
 };
